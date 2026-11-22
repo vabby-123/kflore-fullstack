@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* ---- KFLORÉ brand tokens — light (default) ---- */
+  :root {
+    --k-bg: 36.9 39% 93.5%;           /* warm ivory */
+    --k-bg-alt: 34 33% 89%;           /* deeper ivory for banding */
+    --k-surface: 40 45% 97%;          /* card surface, near white ivory */
+    --k-ink: 0 5% 8%;                 /* soft black */
+    --k-ink-soft: 26 12% 42%;         /* deep taupe */
+    --k-line: 26 14% 20%;             /* hairline base, used at low alpha */
+    --k-brand: 347.5 59% 22%;         /* deep burgundy */
+    --k-brand-strong: 347.7 56% 31%;  /* lighter burgundy for hover */
+    --k-on-brand: 36.9 39% 95%;       /* text on burgundy */
+    --k-gold: 39.1 38% 55%;           /* champagne gold */
+    --k-rose: 0 28% 62%;              /* muted rose */
+
+    --background: var(--k-bg);
+    --foreground: var(--k-ink);
+    --card: var(--k-surface);
+    --card-foreground: var(--k-ink);
+    --popover: var(--k-surface);
+    --popover-foreground: var(--k-ink);
+    --primary: var(--k-brand);
+    --primary-foreground: var(--k-on-brand);
+    --secondary: 34 33% 89%;
+    --secondary-foreground: var(--k-ink);
+    --muted: 34 30% 91%;
+    --muted-foreground: var(--k-ink-soft);
+    --accent: 39.1 38% 55%;
+    --accent-foreground: var(--k-ink);
+    --destructive: 5 62% 40%;
+    --destructive-foreground: 36.9 39% 95%;
+    --border: 26 14% 20% / 0.12;
+    --input: 26 14% 20% / 0.18;
+    --ring: var(--k-brand);
+    --radius: 0.25rem;
+  }
+
+  /* ---- system dark mode, only when no explicit light choice ---- */
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --k-bg: 349 27% 8%;
+      --k-bg-alt: 348.8 29% 11%;
+      --k-surface: 346.7 26% 13.7%;
+      --k-ink: 31.4 47% 91%;
+      --k-ink-soft: 20.5 28% 71%;
+      --k-line: 34 33% 89%;
+      --k-brand: 38.9 55% 67%;
+      --k-brand-strong: 39.1 60% 74%;
+      --k-on-brand: 349 27% 10%;
+      --k-gold: 38.9 55% 67%;
+      --k-rose: 0 40% 74%;
+
+      --background: var(--k-bg);
+      --foreground: var(--k-ink);
+      --card: var(--k-surface);
+      --card-foreground: var(--k-ink);
+      --popover: var(--k-surface);
+      --popover-foreground: var(--k-ink);
+      --primary: var(--k-brand);
+      --primary-foreground: var(--k-on-brand);
+      --secondary: 346.7 26% 18%;
+      --secondary-foreground: var(--k-ink);
+      --muted: 348 24% 16%;
+      --muted-foreground: var(--k-ink-soft);
+      --accent: 38.9 55% 67%;
+      --accent-foreground: var(--k-on-brand);
+      --destructive: 5 60% 62%;
+      --destructive-foreground: 349 27% 10%;
+      --border: 34 33% 89% / 0.14;
+      --input: 34 33% 89% / 0.2;
+      --ring: var(--k-brand);
+    }
+  }
+
+  /* ---- explicit dark toggle always wins ---- */
+  :root[data-theme="dark"] {
+    --k-bg: 349 27% 8%;
+    --k-bg-alt: 348.8 29% 11%;
+    --k-surface: 346.7 26% 13.7%;
+    --k-ink: 31.4 47% 91%;
+    --k-ink-soft: 20.5 28% 71%;
+    --k-line: 34 33% 89%;
+    --k-brand: 38.9 55% 67%;
+    --k-brand-strong: 39.1 60% 74%;
+    --k-on-brand: 349 27% 10%;
+    --k-gold: 38.9 55% 67%;
+    --k-rose: 0 40% 74%;
+
+    --background: var(--k-bg);
+    --foreground: var(--k-ink);
+    --card: var(--k-surface);
+    --card-foreground: var(--k-ink);
+    --popover: var(--k-surface);
+    --popover-foreground: var(--k-ink);
+    --primary: var(--k-brand);
+    --primary-foreground: var(--k-on-brand);
+    --secondary: 346.7 26% 18%;
+    --secondary-foreground: var(--k-ink);
+    --muted: 348 24% 16%;
+    --muted-foreground: var(--k-ink-soft);
+    --accent: 38.9 55% 67%;
+    --accent-foreground: var(--k-on-brand);
+    --destructive: 5 60% 62%;
+    --destructive-foreground: 349 27% 10%;
+    --border: 34 33% 89% / 0.14;
+    --input: 34 33% 89% / 0.2;
+    --ring: var(--k-brand);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+    background: hsl(var(--k-bg));
+    font-family: "Jost", ui-sans-serif, system-ui, sans-serif;
+  }
+  h1, h2, h3, h4, .font-display {
+    font-family: "Fraunces", ui-serif, Georgia, serif;
+    text-wrap: balance;
+  }
+}
+
+@layer utilities {
+  .eyebrow {
+    font-family: "Jost", ui-sans-serif, sans-serif;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-size: 0.68rem;
+    font-weight: 500;
+  }
+  .k-hairline {
+    border-color: hsl(var(--k-line) / 0.14);
+  }
+  .k-container {
+    width: 100%;
+    max-width: 84rem;
+    margin-inline: auto;
+    padding-inline: clamp(1.25rem, 4vw, 3.5rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
